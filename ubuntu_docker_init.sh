@@ -7,5 +7,6 @@ apt install openssh-client
 apt install openssh-server
 apt install tmux
 apt install git
+apt install curl
 ssh-keygen
-useradd poker
+adduser poker
