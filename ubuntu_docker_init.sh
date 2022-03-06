@@ -2,10 +2,10 @@
 
 function apt_source_change()
 {
-sudo mv /etc/apt/sources.list /etc/apt/sources.list.back
-sudo touch /etc/apt/sources.list
-sudo chmod 777 /etc/apt/*
-sudo cat>>/etc/apt/sources.list<<EOF    #多行输入
+mv /etc/apt/sources.list /etc/apt/sources.list.back
+touch /etc/apt/sources.list
+chmod 777 /etc/apt/*
+cat>>/etc/apt/sources.list<<EOF    #多行输入
 # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
 # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
@@ -20,41 +20,41 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted 
 # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
 # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
 EOF
-sudo apt update
+apt update
 }
 
 function pip_install()
 {
+apt install sudo
 pip3 --version
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-sudo apt install python3-distutils
+apt install python3-distutils
 python3 get-pip.py
-sudo pip3 install --upgrade pip
-sudo pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+pip3 install --upgrade pip
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 }
 
 function ubuntu_init()
 {
-sudo apt install sudo -y
-sudo apt install vim -y
-sudo apt install tmux -y
-sudo apt install git -y
-sudo apt install curl -y
-sudo apt install tree -y
+apt install sudo -y
+apt install vim -y
+apt install tmux -y
+apt install git -y
+apt install curl -y
+apt install tree -y
 useradd poker -p poker -m -d /home/poker/
 }
 
 function ssh_install()
 {
-sudo apt install openssh-server -y
-sudo apt install openssh-client -y
+apt install openssh-server -y
+apt install openssh-client -y
 ssh-keygen
 }
 
 function docker_install()
 {
-sudo apt update
-sudo apt install curl -y
+apt install curl -y
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 sudo usermod -aG docker $USER
@@ -62,7 +62,8 @@ sudo usermod -aG docker $USER
 
 function menu()
 {
-
+apt update
+apt install sudo
 echo "###########################################################"
 echo "#              Please enter your choise:                  #"
 echo "#              (0) 执行全部                               #"
@@ -81,6 +82,7 @@ case $cho in
 	apt_source_change
 	pip_install
 	ubuntu_init
+	docker_install
 	ssh_install
 	;;
 	1)
