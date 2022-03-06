@@ -41,6 +41,7 @@ apt install tmux -y
 apt install git -y
 apt install curl -y
 apt install tree -y
+apt install wget -y
 useradd poker -p poker -m -d /home/poker/
 }
 
@@ -67,7 +68,7 @@ echo "#              (0) 执行全部                               #"
 echo "#              (1) pip安装与换源                          #"
 echo "#              (2) 安装常用软件并创建用户poker            #"
 echo "#              (3) 安装ssh-server和ssh-client             #"
-echo "#              (4) apt换源		                #"
+echo "#              (4) apt换源(暂不支持)                      #"
 echo "#              (5) docker安装                             #"
 echo "#              (q) 退出			                #"
 echo "###########################################################"
@@ -78,7 +79,7 @@ apt update
 
 case $cho in
 	0)
-	apt_source_change
+	# apt_source_change
 	pip_install
 	ubuntu_init
 	docker_install
