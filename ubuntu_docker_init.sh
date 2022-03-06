@@ -25,7 +25,6 @@ apt update
 
 function pip_install()
 {
-apt install sudo
 pip3 --version
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 apt install python3-distutils
@@ -62,8 +61,6 @@ sudo usermod -aG docker $USER
 
 function menu()
 {
-apt update
-apt install sudo
 echo "###########################################################"
 echo "#              Please enter your choise:                  #"
 echo "#              (0) 执行全部                               #"
@@ -76,6 +73,8 @@ echo "#              (q) 退出			                #"
 echo "###########################################################"
 
 read cho
+
+apt update
 
 case $cho in
 	0)
